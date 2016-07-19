@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ELA</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="ela.js"></script>
+</head>
+<body style="background-color: black">
+<img id="input" src="sample/yosemite.jpg"/>
+<img id="output"/>
+<script>
+    $(document).ready(function(){
+        var input = $("#input");
+        var output = $("#output");
+        var quality = 90;
+        var scale = 10;
+        setTimeout(function(){
+            analyzeImage(input,output,quality,scale);
+        },2000);
+    });
+</script>
+</body>
+</html>
