@@ -1,20 +1,22 @@
 function analyzeImage(input, output, quality, scale) {
+    var wb = input.width();
+    var hb = input.height();
     var inputCanvas = document.createElement("canvas");
-    inputCanvas.width = input[0].width;
-    inputCanvas.height = input[0].height;
+    inputCanvas.width = wb;
+    inputCanvas.height = hb;
     var inputCanvasCtx = inputCanvas.getContext('2d');
-    inputCanvasCtx.drawImage(input[0], 0, 0);
+    inputCanvasCtx.drawImage(input[0], 0, 0, wb, hb);
 
     var compressedCanvas = document.createElement("canvas");
-    compressedCanvas.width = input[0].width;
-    compressedCanvas.height = input[0].height;
+    compressedCanvas.width = wb;
+    compressedCanvas.height = hb;
     var compressedCanvasCtx = compressedCanvas.getContext('2d');
 
-    var sourceData = inputCanvasCtx.getImageData(0, 0, input[0].width, input[0].height);
+    var sourceData = inputCanvasCtx.getImageData(0, 0, wb, hb);
 
     input.on('load', function () {
         compressedCanvasCtx.drawImage(input[0], 0, 0);
-        var compressedData = compressedCanvasCtx.getImageData(0, 0, input[0].width, input[0].height);
+        var compressedData = compressedCanvasCtx.getImageData(0, 0, wb, hb);
         var data0 = sourceData.data;
         var data1 = compressedData.data;
         for (var i = 0, l = data0.length; i < l; i += 4) {
